@@ -1,0 +1,21 @@
+<% include partials/_header %>
+
+<div class="container jumbotron">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/edit/<%= tarefa._id %>" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="vc_tarefa" placeholder="Tarefa" value="<%= tarefa.vc_tarefa %>">
+                        </div>                           
+                        <button type="submit" class="btn btn-success"> Atualizar <i class="fas fa-sync-alt"></i> </button>                                                                                                                          
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>
+

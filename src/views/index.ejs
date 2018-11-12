@@ -1,0 +1,52 @@
+<% include partials/_header %>
+
+ <div class="container jumbotron">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="vc_tarefa" placeholder="Tarefa">
+                        </div>                           
+                        <button type="submit" class="btn btn-success"> Adicionar <i class="fas fa-plus-circle"></i> </button>                                                                                                                          
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <th>#</th>
+                            <th>Tarefa</th>
+                            <th></th>
+                        </thead>
+                        <tbody> 
+                            <% for(var i=0; i<tarefas.length; i++) { %> 
+                                <tr>
+                                    <td class="<%=tarefas[i].ch_status ? 'riscar' : '' %>" ><%= i + 1 %></td>
+                                    <td class="<%=tarefas[i].ch_status ? 'riscar' : '' %>"> <%= tarefas[i].vc_tarefa %></td>
+                                    <td>
+                                       <a href="/riscar/<%= tarefas[i]._id%>" class="btn <%= tarefas[i].ch_status ? 'btn-success' : 'btn-ligth' %> btn-ligth"> <i class="far fa-check-square"></i> </a> 
+                                       <a href="/edit/<%= tarefas[i]._id%>" class="btn btn-dark"><i class="fas fa-pen"></i> Editar </a>
+                                       <a href="/delete/<%= tarefas[i]._id%>" class="btn btn-danger"><i class="far fa-trash-alt"></i> Excluir</a>
+                                    </td>
+                                </tr>
+                            <% } %>                                  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+ <% include partials/_footer %>
+
+ <style>
+     .riscar{
+         text-decoration: line-through;
+     }
+ </style>
